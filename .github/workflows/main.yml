@@ -1,3 +1,10 @@
+name: Python Application CI
+
+on: 
+  push:   # This specifies the event that will trigger the workflow
+    branches:
+      - main  # Replace with your branch name if different
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -7,12 +14,9 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: '3.12'
-        architecture: 'x64'
+        python-version: '3.x'
     - name: Install dependencies
       run: |
-        sudo apt-get update
-        sudo apt-get install python3-distutils
         python -m pip install --upgrade pip
         pip install -r requirements.txt
     - name: Run script
